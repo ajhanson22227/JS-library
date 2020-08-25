@@ -1,0 +1,46 @@
+.library-shelf{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	width: 80%;
+	margin: 5px auto;
+}
+
+.book{
+	border: 1px solid black;
+	background-color: #f5f2d0;
+	width: 150px;
+	height: 150px;
+	margin: 2px 2px;
+}
+
+.book-title{
+	font-size: 24px;
+}
+
+.book-author{
+	font-size: 18px;
+}
+
+.book-title,
+.book-author,
+.book-pages,
+.book-id{
+	font-family: 'Indie Flower', cursive;
+	text-align: center;
+}
+
+.new-book-menu{
+	display: none;
+	width: 15%;
+	background-color: beige;
+}
+
+input{
+	width: 80%;
+}
+
+.delete-book-button{
+	margin: 3px 0 0 3px;
+}
