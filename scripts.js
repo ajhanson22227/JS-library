@@ -114,11 +114,11 @@ function deleteBook(id){
 
 let theHobbit = new Book('The Hobbit', "JRR Tolkien", 296, false);
 myBooks.push(theHobbit);
-let theHobbit2 = new Book('The Hobbit', "JRR Tolkien", 296, false);
+let theHobbit2 = new Book('Harry Potter', "JK Rowling", 1001, false);
 myBooks.push(theHobbit2);
-let theHobbit3 = new Book('The Hobbit', "JRR Tolkien", 296, false);
+let theHobbit3 = new Book('The Gunslinger', "Stephen King", 321, false);
 myBooks.push(theHobbit3);
-let theHobbit4 = new Book('The Hobbit', "JRR Tolkien", 296, false);
+let theHobbit4 = new Book('Green Eggs and Ham', "Dr. Seuss", 296, false);
 myBooks.push(theHobbit4);
 addBookToLibrary();
 
