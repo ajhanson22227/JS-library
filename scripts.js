@@ -3,27 +3,26 @@ function Book(title, author, pages, read){
 	this.author = author;
 	this.pages = pages;
 	this.read = read;
-	this.id = 0;
 }
 
 
 
 const shelf = document.querySelector('.library-shelf');
 let myBooks = [];
+let myLibrary = []
 
-function addBookToLibrary(){
+
+function displayLibrary(){
 	shelf.innerText = "";
 
-	bookID = 0;
-	myBooks.forEach(book => {
-		book.id = bookID;
-		bookID += 1;
+	myBooks.forEach((book, index) => {
+		book.id = index;
 
 		let delBtn = document.createElement('i');
 		delBtn.className += "delete-book-button fas fa-times-circle"
 		delBtn.addEventListener('click', function(){
 			deleteBook(this.parentNode.lastChild.innerText);
-			addBookToLibrary();
+			displayLibrary();
 		});
 
 		let bookDiv = document.createElement('div');
@@ -35,23 +34,37 @@ function addBookToLibrary(){
 
 		let bookAuthorDiv = document.createElement('div');
 		bookAuthorDiv.className += 'book-author';
-		bookAuthorDiv.innerText = book.author;
+		bookAuthorDiv.innerText = `by ${book.author}`;
 
 		let bookPagesDiv = document.createElement('div');
 		bookPagesDiv.className += 'book-pages';
 		bookPagesDiv.innerText = `${book.pages} pages`
 
+
+		let bookReadDiv = document.createElement('div');
+		bookReadDiv.className += 'book-read';
+		if (book.read) bookReadDiv.innerText = 'Read';
+		else bookReadDiv.innerText = 'Unread';
+		bookReadDiv.addEventListener('click', function(){
+			changeBookRead(book);
+			bookReadDiv.innerText = changeBookReadDiv(book);
+		})
+
+
 		let bookIDDiv = document.createElement('div');
-		bookIDDiv.className += 'book-id';
+		bookIDDiv.className += 'book-id hidden';
 		bookIDDiv.innerText = book.id + 1;
 
 		bookDiv.appendChild(delBtn);
 		bookDiv.appendChild(bookTitleDiv);
 		bookDiv.appendChild(bookAuthorDiv);
 		bookDiv.appendChild(bookPagesDiv);
+		bookDiv.appendChild(bookReadDiv);
 		bookDiv.appendChild(bookIDDiv);
 		shelf.appendChild(bookDiv);
-	})
+
+	})	
+		
 }
 
 
@@ -82,7 +95,7 @@ submitBtn.addEventListener('click', function(){
 
 	document.querySelector('.new-book-menu').style.display = 'none';
 	menuBtn.style.display = 'block';
-	addBookToLibrary();
+	displayLibrary();
 	clearMenu();
 })
 
@@ -105,21 +118,28 @@ function deleteBook(id){
 	myBooks.splice(id-1, 1);
 }
 
+function changeBookRead(book){
+	book.read = !book.read;
+}
+
+function changeBookReadDiv(book){
+	if (book.read) return 'Read'
+	else return 'Unread';
+}
 
 
 
 
 
 
-
-let theHobbit = new Book('The Hobbit', "JRR Tolkien", 296, false);
+let theHobbit = new Book('The Hobbit', "JRR Tolkien", 310, false);
 myBooks.push(theHobbit);
-let theHobbit2 = new Book('Harry Potter', "JK Rowling", 1001, false);
+let theHobbit2 = new Book('Harry Potter', "JK Rowling", 309, false);
 myBooks.push(theHobbit2);
-let theHobbit3 = new Book('The Gunslinger', "Stephen King", 321, false);
+let theHobbit3 = new Book('The Gunslinger', "Stephen King", 300, false);
 myBooks.push(theHobbit3);
-let theHobbit4 = new Book('Green Eggs and Ham', "Dr. Seuss", 296, false);
+let theHobbit4 = new Book('Green Eggs and Ham', "Dr. Seuss", 62, false);
 myBooks.push(theHobbit4);
-addBookToLibrary();
+displayLibrary();
 
 
