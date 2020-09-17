@@ -26,7 +26,7 @@ function displayLibrary(){
 		});
 
 		let bookDiv = document.createElement('div');
-		bookDiv.className += "book"
+		bookDiv.className += "book disable-select"
 
 		let bookTitleDiv = document.createElement('div');
 		bookTitleDiv.className += 'book-title';
@@ -42,9 +42,8 @@ function displayLibrary(){
 
 
 		let bookReadDiv = document.createElement('div');
-		bookReadDiv.className += 'book-read';
-		if (book.read) bookReadDiv.innerText = 'Read';
-		else bookReadDiv.innerText = 'Unread';
+		bookReadDiv.className += 'book-read disable-select';
+		bookReadDiv.innerText = changeBookReadDiv(book);
 		bookReadDiv.addEventListener('click', function(){
 			changeBookRead(book);
 			bookReadDiv.innerText = changeBookReadDiv(book);
